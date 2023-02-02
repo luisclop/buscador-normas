@@ -3,20 +3,20 @@ import { useState } from "react";
 
 const options = {
   autoHide: true,
-  todayBtn: true,
+  todayBtn: false,
   clearBtn: false,
-  maxDate: new Date("2030-01-01"),
+  maxDate: new Date(),
   minDate: new Date("2014-01-01"),
   theme: {
     background: "bg-gray-100 dark:bg-gray-800",
-    todayBtn: "green-700",
+    todayBtn: "bg-green-700 hover:bg-green-800",
     clearBtn: "",
     icons: "bg-gray-100",
     text: "",
-    disabledText: "",
+    disabledText: "text-gray-300",
     input: "",
     inputIcon: "",
-    selected: "",
+    selected: "bg-green-700 hover:bg-green-700 text-gray-100",
   },
   icons: {
     // () => ReactNode | JSX.Element
@@ -53,16 +53,18 @@ const options = {
       </svg>
     ),
   },
-  datepickerClassNames: "top-12",
+  datepickerClassNames: "top-72",
   defaultDate: new Date(),
   language: "es",
 };
 
-export const Selector = () => {
+export const Selector = (props: { onSelectedDate: (date: Date) => void }) => {
   const [show, setShow] = useState<boolean>(false);
+
   const handleChange = (selectedDate: Date) => {
-    console.log(selectedDate);
+    props.onSelectedDate(selectedDate);
   };
+
   const handleClose = (state: boolean) => {
     setShow(state);
   };
