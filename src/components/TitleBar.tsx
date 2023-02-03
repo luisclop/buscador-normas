@@ -13,7 +13,7 @@ export function TitleBar() {
     <div className="titlebar flex h-10 w-full items-center justify-end bg-green-700">
       <p className="pr-72 text-lg font-bold text-white">Buscador de Normas</p>
       <button
-        className="window-control h-10 w-10 hover:bg-green-900"
+        className="window-control h-10 w-10 transition-all hover:bg-green-900"
         onClick={handleMinimize}
       >
         <svg
@@ -28,7 +28,7 @@ export function TitleBar() {
         </svg>
       </button>
       <button
-        className="window-control h-10 w-10 hover:bg-red-600"
+        className="window-control h-10 w-10 transition-all hover:bg-red-600"
         onClick={handleClose}
       >
         <svg

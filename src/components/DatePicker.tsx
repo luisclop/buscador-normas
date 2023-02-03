@@ -13,7 +13,7 @@ const options = {
     clearBtn: "",
     icons: "bg-gray-100",
     text: "",
-    disabledText: "text-gray-300",
+    disabledText: "text-gray-400",
     input: "",
     inputIcon: "",
     selected: "bg-green-700 hover:bg-green-700 text-gray-100",
