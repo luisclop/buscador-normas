@@ -1,11 +1,13 @@
 import { Button, Spinner } from "flowbite-react";
 import React, { useState } from "react";
 import { Selector, ListaFiltros, TablaResultados } from "./components";
+import { ipcRenderer } from "electron";
 
 function App() {
   const [selectedDate, setSelectedDate] = useState<string>(
     new Date().toLocaleDateString("es-ES")
   );
+  const [resultados, setResultados] = useState([]);
   const handleSelectedDate = (date: Date) => {
     const year = date.getFullYear();
     let month = date.getMonth() + 1;
@@ -16,6 +18,10 @@ function App() {
 
     const formattedDate = `${f_day}/${f_month}/${year}`;
     setSelectedDate(formattedDate);
+  };
+
+  const scrapeProducts = async (url: string) => {
+    await ipcRenderer.invoke("scrape-laws", url);
   };
 
   const [sector, setSector] = useState("");
@@ -35,6 +41,7 @@ function App() {
         <Button
           color=""
           className="bg-green-700 text-white transition-all hover:bg-green-800 focus:bg-green-700"
+          onClick={() => scrapeProducts(selectedDate)}
         >
           <span className="w-16">Buscar</span>
         </Button>
