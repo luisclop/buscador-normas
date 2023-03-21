@@ -20,8 +20,10 @@ function App() {
     setSelectedDate(formattedDate);
   };
 
-  const scrapeProducts = async (url: string) => {
-    await ipcRenderer.invoke("scrape-laws", url);
+  const scrapeLaws = async (url: string) => {
+    const normas = await ipcRenderer.invoke("scrape-laws", url);
+    setResultados(normas);
+    console.log(resultados[14]);
   };
 
   const [sector, setSector] = useState("");
@@ -36,17 +38,22 @@ function App() {
       <div className="mt-4 flex">
         <div className="mr-4 w-48">
           <Selector onSelectedDate={handleSelectedDate} />
-          <p>Fecha seleccionda: {selectedDate}</p>
         </div>
         <Button
           color=""
           className="bg-green-700 text-white transition-all hover:bg-green-800 focus:bg-green-700"
-          onClick={() => scrapeProducts(selectedDate)}
+          onClick={() => scrapeLaws(selectedDate)}
         >
           <span className="w-16">Buscar</span>
         </Button>
       </div>
-      <TablaResultados />
+      {resultados.length === 0 ? (
+        <div className="flex h-full items-center justify-center">
+          <Spinner />
+        </div>
+      ) : (
+        <TablaResultados resultados={resultados} />
+      )}
     </div>
   );
 }
