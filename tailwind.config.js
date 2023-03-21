@@ -6,7 +6,12 @@ module.exports = {
     "node_modules/tailwind-datepicker-react/dist/**/*.js",
   ],
   theme: {
-    extend: {},
+    extend: {
+      height: {
+        100: "25rem",
+        108: "27rem",
+      },
+    },
   },
   plugins: [require("flowbite/plugin")],
 };

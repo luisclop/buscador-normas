@@ -35,7 +35,7 @@ function App() {
     <div className="flex h-full w-full flex-col justify-start p-4">
       <ListaFiltros onSelectedSector={handleSelectedSector} sector={sector} />
       <p>Filtro: {sector} </p>
-      <div className="mt-4 flex">
+      <div className="mb-4 flex">
         <div className="mr-4 w-48">
           <Selector onSelectedDate={handleSelectedDate} />
         </div>
@@ -46,6 +46,14 @@ function App() {
         >
           <span className="w-16">Buscar</span>
         </Button>
+        {resultados.length > 0 ? (
+          <Button
+            color=""
+            className="mx-4 bg-green-700 text-white transition-all hover:bg-green-800 focus:bg-green-700"
+          >
+            <span className="w-16">Descargar</span>
+          </Button>
+        ) : null}
       </div>
       {resultados.length === 0 ? (
         <div className="flex h-full items-center justify-center">

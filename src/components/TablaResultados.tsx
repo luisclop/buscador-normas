@@ -7,7 +7,7 @@ export interface TablaResultadosProps {
 
 export function TablaResultados({ resultados }: TablaResultadosProps) {
   return (
-    <div style={{ height: "380px", overflowY: "scroll" }}>
+    <div className="h-108 overflow-y-scroll">
       <Table>
         <Table.Head>
           <Table.HeadCell>Sector</Table.HeadCell>
